@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_upadteprofile"
+            android:icon="@drawable/onion"
+            android:title="Update Profile" />
+        <item
+            android:id="@+id/nav_upcomingcontest"
+            android:icon="@drawable/onion"
+            android:title="Upcoming Contest" />
+        <item
+            android:id="@+id/nav_searchfriend"
+            android:icon="@drawable/onion"
+            android:title="Search Friend" />
+        <item
+            android:id="@+id/nav_myfriends"
+            android:icon="@drawable/onion"
+            android:title="My Friends" />
+        <item
+            android:id="@+id/nav_favourites"
+            android:icon="@drawable/onion"
+            android:title="Favourites" />
+    </group>
+
+
+</menu>

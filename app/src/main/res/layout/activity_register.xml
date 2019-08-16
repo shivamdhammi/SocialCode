@@ -7,7 +7,12 @@
     tools:context=".register"
     tools:layout_editor_absoluteY="81dp"
     android:orientation="vertical"
-    android:background="#dbdbdb">
+    android:background="#000">
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logo2"
+        android:layout_gravity="center"/>
 
     <LinearLayout
         android:layout_marginTop="50dp"
@@ -23,6 +28,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/textbox"
             android:hint="Name"
+            android:textColor="#fff"
             android:inputType="textLongMessage"
             android:padding="10dp"
             android:textAllCaps="false"
@@ -31,17 +37,19 @@
         <EditText
             android:background="@drawable/textbox"
             android:padding="10dp"
+            android:textColor="#fff"
             android:layout_marginBottom="20dp"
             android:id="@+id/reg_college"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:hint="College"
-            android:inputType="phone" />
+            android:inputType="textPersonName" />
 
         <EditText
             android:background="@drawable/textbox"
             android:padding="10dp"
             android:layout_marginBottom="20dp"
+            android:textColor="#fff"
             android:id="@+id/reg_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,6 +61,7 @@
             android:id="@+id/reg_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#fff"
             android:layout_marginBottom="20dp"
             android:background="@drawable/textbox"
             android:hint="Password"
@@ -65,6 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@drawable/textbox"
+            android:textColor="#fff"
             android:hint="Re-Enter Password "
             android:inputType="textPassword"
             android:padding="10dp"
@@ -76,6 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@drawable/textbox"
+            android:textColor="#fff"
             android:hint="CodeForces"
             android:inputType="textPersonName"
             android:padding="10dp" />
@@ -86,6 +97,7 @@
             android:layout_marginBottom="20dp"
             android:id="@+id/reg_hackerrank"
             android:layout_width="match_parent"
+            android:textColor="#fff"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:hint="HackerRank" />

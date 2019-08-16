@@ -10,7 +10,7 @@ import android.widget.Button;
 public class splashScreen extends AppCompatActivity {
 
     Button btnLogin,btnRegister;
-    private long time = 3000;
+    private long time = 1500;
     private CountDownTimer timer;
 
 
@@ -33,7 +33,7 @@ public class splashScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),login.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
 
@@ -42,7 +42,7 @@ public class splashScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),register.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
 

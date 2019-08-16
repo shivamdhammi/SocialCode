@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".splashScreen">
+    tools:context=".splashScreen"
+    android:background="#000">
 
     <ImageView
         android:id="@+id/imageView"
@@ -12,7 +13,8 @@
         android:layout_height="match_parent"
         app:srcCompat="@drawable/logo"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="7dp" />
+        tools:layout_editor_absoluteY="7dp"
+        android:layout_marginTop="-200dp"/>
 
     <LinearLayout
 
@@ -24,17 +26,25 @@
         >
 
         <Button
+            android:layout_marginHorizontal="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
             android:text="Login"
-            android:id="@+id/ss_login"/>
+            android:id="@+id/ss_login"
+            android:textColor="#ffff"
+            android:textStyle="bold"
+            android:background="@drawable/buttonbackground"/>
         <Button
+            android:layout_marginHorizontal="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".5"
             android:text="Register"
-            android:id="@+id/ss_register"/>
+            android:id="@+id/ss_register"
+            android:textColor="#ffff"
+            android:background="@drawable/buttonbackground"
+            android:textStyle="bold"/>
 
     </LinearLayout>
     </RelativeLayout>
