@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register"
+    tools:layout_editor_absoluteY="81dp"
+    android:orientation="vertical"
+    android:background="#dbdbdb">
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_width="350dp"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/reg_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/textbox"
+            android:hint="Name"
+            android:inputType="textLongMessage"
+            android:padding="10dp"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <EditText
+            android:background="@drawable/textbox"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/reg_college"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="College"
+            android:inputType="phone" />
+
+        <EditText
+            android:background="@drawable/textbox"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/reg_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+
+
+        <EditText
+            android:id="@+id/reg_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/textbox"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/reg_repass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/textbox"
+            android:hint="Re-Enter Password "
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/reg_codeforces"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/textbox"
+            android:hint="CodeForces"
+            android:inputType="textPersonName"
+            android:padding="10dp" />
+
+        <EditText
+            android:background="@drawable/textbox"
+            android:padding="10dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/reg_hackerrank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="HackerRank" />
+
+        <Button
+            android:id="@+id/reg_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/buttonbackground"
+            android:text="Register"
+            android:textColor="#ffff"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
