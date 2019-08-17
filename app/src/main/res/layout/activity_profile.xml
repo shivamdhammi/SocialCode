@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".profile"
+    tools:openDrawer="start"
     android:background="#000">
 
     <LinearLayout
@@ -37,10 +38,11 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header"
         android:background="#000"
-        app:itemTextColor="#fff"
-        app:itemIconTint="#ffffff"
+        app:itemTextColor="@color/drawer_item"
+        app:itemIconTint="@color/drawer_item"
         app:menu="@menu/drawer_menu">
         <LinearLayout
+            android:id="@+id/nav_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

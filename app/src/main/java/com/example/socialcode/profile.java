@@ -1,5 +1,6 @@
 package com.example.socialcode;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,9 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class profile extends AppCompatActivity {
     private DrawerLayout drawer;
+    private LinearLayout logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +34,12 @@ public class profile extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.nav_home:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new home()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new home()).commit();
                         break;
+                    case R.id.nav_upadteprofile:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new updateProfile()).commit();
                 }
                 drawer.closeDrawer(GravityCompat.START);
                 return true;
@@ -44,6 +55,18 @@ public class profile extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new home()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
+
+
+        logout = findViewById(R.id.nav_logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(getApplicationContext(),login.class));
+                Toast.makeText(getApplicationContext(),"Logout Successful",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

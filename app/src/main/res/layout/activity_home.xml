@@ -16,20 +16,62 @@
             android:layout_height="200dp"
             app:srcCompat="@drawable/coverimage" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_below="@+id/toolbar"
-            android:id="@+id/imageView3"
+            android:id="@+id/home_pic"
             android:layout_marginTop="60dp"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:srcCompat="@drawable/deafultpic" />
+            android:src="@drawable/deafultpic"
+            app:civ_border_width="3dp"
+            app:civ_border_color="#FF000000"/>
+
+
+        <LinearLayout
+            android:layout_marginTop="-20dp"
+            android:id="@+id/home_namelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/imageView2"
+            android:layout_toRightOf="@+id/home_pic">
+            <TextView
+                android:id="@+id/home_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:text="Your Name" />
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:id="@+id/home_verification"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_verified_user"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_marginStart="150dp"
+            android:textSize="25sp"
+            android:layout_marginTop="2dp"
+            android:layout_below="@+id/home_namelayout"
+            android:id="@+id/home_college"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:text="Your College" />
 
 
         <LinearLayout
             android:id="@+id/linearone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView3"
+            android:layout_below="@+id/home_pic"
             android:orientation="vertical">
 
             <View
@@ -102,6 +144,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="0"
+                    android:id="@+id/home_crating"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 
@@ -109,6 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/home_csubmission"
                     android:text="0"
                     android:textColor="#fff"
                     android:textSize="20sp" />
@@ -117,6 +161,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/home_ccontset"
                     android:text="0"
                     android:textColor="#fff"
                     android:paddingLeft="50dp"
@@ -167,6 +212,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
+
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Rating"
@@ -183,6 +229,7 @@
                     android:textSize="20sp" />
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -206,6 +253,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/home_hrating"
                     android:layout_weight="1"
                     android:text="0"
                     android:textColor="#fff"
@@ -213,6 +261,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:id="@+id/home_hsubmission"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="0"
@@ -222,6 +271,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/home_hcontset"
                     android:layout_weight="1"
                     android:text="0"
                     android:paddingLeft="50dp"
@@ -235,5 +285,18 @@
                 android:background="#fff" />
 
         </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/home_compiler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginTop="700dp"
+        android:layout_marginStart="330dp"
+        android:backgroundTint="#18A0EC"
+        android:src="@drawable/ic_compiler_24dp" />
+
+
 
 </RelativeLayout>

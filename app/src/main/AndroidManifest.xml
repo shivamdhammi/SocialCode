@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".home"></activity>
+        <activity android:name=".compiler"></activity>
+        <activity android:name=".updateProfile" />
+        <activity android:name=".home" />
         <activity android:name=".profile" />
         <activity android:name=".register" />
         <activity android:name=".login" />
