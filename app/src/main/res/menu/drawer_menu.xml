@@ -5,26 +5,34 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home"/>
+        <item
             android:id="@+id/nav_upadteprofile"
-            android:icon="@drawable/onion"
+            android:icon="@drawable/ic_edit_24dp"
             android:title="Update Profile" />
         <item
             android:id="@+id/nav_upcomingcontest"
-            android:icon="@drawable/onion"
+            android:icon="@drawable/ic_upcoming_24dp"
             android:title="Upcoming Contest" />
         <item
             android:id="@+id/nav_searchfriend"
-            android:icon="@drawable/onion"
+            android:icon="@drawable/ic_search_24dp"
             android:title="Search Friend" />
         <item
             android:id="@+id/nav_myfriends"
-            android:icon="@drawable/onion"
+            android:icon="@drawable/ic_group_24dp"
             android:title="My Friends" />
         <item
             android:id="@+id/nav_favourites"
-            android:icon="@drawable/onion"
+            android:icon="@drawable/ic_star_24dp"
             android:title="Favourites" />
     </group>
+
+
+
+
 
 
 </menu>
