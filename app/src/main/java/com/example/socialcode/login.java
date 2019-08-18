@@ -57,7 +57,6 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getApplicationContext(),"clicked",Toast.LENGTH_LONG).show();
-//                avi.show();
                 loginUser();
             }
         });
