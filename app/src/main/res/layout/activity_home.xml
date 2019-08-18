@@ -77,7 +77,64 @@
 
 
         <LinearLayout
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/home_college"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:weightSum="100">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="100"
+                android:layout_weight="45"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="80"
+                    android:src="@drawable/valid"/>
+                <TextView
+                    android:layout_weight="20"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Codeforces"
+                    android:textColor="#fff"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="100"
+                android:layout_weight="45"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="80"
+                    android:src="@drawable/ic_invalid"/>
+                <TextView
+                    android:layout_weight="20"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="HackerRank"
+                    android:textColor="#fff"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:textSize="25sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="120dp"
             android:id="@+id/linearone"
             android:layout_marginHorizontal="20dp"
             android:layout_width="match_parent"
