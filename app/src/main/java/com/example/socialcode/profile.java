@@ -21,6 +21,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +41,8 @@ public class profile extends AppCompatActivity{
     private DrawerLayout drawer;
     private LinearLayout logout;
     private ImageView retrive;
+    private FirebaseAuth auth;
+    private DatabaseReference ref;
 //    public String rating="";
     home Home;
     updateProfile UpdateProfile;
@@ -48,17 +55,29 @@ public class profile extends AppCompatActivity{
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        auth = FirebaseAuth.getInstance();
+        ref = ref = FirebaseDatabase.getInstance().getReference("Users");
 
-//        retrive = findViewById(R.id.profile_retrive);
-//        retrive.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                retriveData();
-//            }
-//        });
-//        Toast.makeText(getApplicationContext(),getIntent().getExtras().getString("rating"),Toast.LENGTH_LONG).show();
         Home = new home();
         UpdateProfile = new updateProfile();
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                userInfo userinfo = dataSnapshot.child(auth.getCurrentUser().getUid()).child("Info").getValue(userInfo.class);
+
+                SharedPreferences sharedPref=getSharedPreferences("MyData", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedPref.edit();
+                editor.putString("codeforces_id",userinfo.getCodeforces());
+                // editor.putString("State",state);
+                editor.commit();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_LONG).show();
+            }
+        });
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -102,6 +121,8 @@ public class profile extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(),"Logout Successful",Toast.LENGTH_LONG).show();
             }
         });
+
+
     }
 
 //    @Override
@@ -136,6 +157,7 @@ public class profile extends AppCompatActivity{
         SharedPreferences.Editor editor=sharedPref.edit();
         editor.putString("Email","");
         editor.putString("Password","");
+        editor.putString("codeforces_id","");
         // editor.putString("State",state);
         editor.commit();
     }

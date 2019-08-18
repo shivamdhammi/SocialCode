@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -37,16 +37,19 @@
             <!--android:textStyle="bold" />-->
     <!--</RadioGroup>-->
     <ImageView
-        android:layout_width="wrap_content"
+        android:id="@+id/login_logo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/logo2"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"/>
 
     <RelativeLayout
+        android:layout_below="@+id/login_logo"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/login_layout_login"
         android:orientation="vertical">
 
 
@@ -103,9 +106,11 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_below="@+id/login_layout_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/login_layout_pass">
 
 
         <LinearLayout
@@ -222,6 +227,7 @@
     </LinearLayout>-->
 
     <LinearLayout
+        android:layout_below="@+id/login_layout_pass"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_width="match_parent"
@@ -272,5 +278,24 @@
             tools:layout_editor_absoluteY="351dp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_layout_pass"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="170dp">
 
-</LinearLayout>
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/login_avi"
+            style="@style/AVLoadingIndicatorView.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:indicatorColor="#179FEB"
+            app:indicatorName="LineScaleIndicator" />
+    </LinearLayout>
+
+
+</RelativeLayout>

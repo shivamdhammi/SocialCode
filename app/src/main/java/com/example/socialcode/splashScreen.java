@@ -36,7 +36,7 @@ public class splashScreen extends AppCompatActivity {
     private long time = 1500;
     private CountDownTimer timer;
     private  FirebaseAuth auth;
-    private String rating;
+    private String rating,codeforcesid;
     private LinearLayout progress;
 
 
@@ -53,6 +53,8 @@ public class splashScreen extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         user = sharedPref.getString("Email","");
         pass = sharedPref.getString("Password","");
+//        pass="";
+        codeforcesid = sharedPref.getString("codeforces_id","");
         auth = FirebaseAuth.getInstance();
 
         btnLogin.setVisibility(View.INVISIBLE);
@@ -138,7 +140,7 @@ public class splashScreen extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... voids) {
             try {
-                URL url = new URL("http://codeforces.com/api/user.info?handles=shivam_dhammi");
+                URL url = new URL("http://codeforces.com/api/user.info?handles="+codeforcesid);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));

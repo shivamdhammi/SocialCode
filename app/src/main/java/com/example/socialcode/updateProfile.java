@@ -44,7 +44,7 @@ public class updateProfile extends Fragment {
     private ImageView pic,verification;
     private static final int CHOOSE_IMAGE = 101;
     private TextView Name,College,Email,Codeforces,Hackerarnk,verify,resetpasword;
-    private LinearLayout verifylayout;
+    private LinearLayout verifylayout,progress;
 
     private Uri uriProfileImage;//uriZProfileImage = data.getData();[inside startActivityForResult()]
     private String profileImageUrl;//To store the Downloaded URL of the image
@@ -65,6 +65,8 @@ public class updateProfile extends Fragment {
         Codeforces = view.findViewById(R.id.uprofile_codeforces);
         Hackerarnk = view.findViewById(R.id.uprofile_hackerrank);
 
+        progress = view.findViewById(R.id.uprofile_progress);
+
         Save = view.findViewById(R.id.uprofile_save);
         pic = view.findViewById(R.id.uprofile_pic);
         verification = view.findViewById(R.id.uprofile_verification);
@@ -83,6 +85,7 @@ public class updateProfile extends Fragment {
         Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progress.setVisibility(View.VISIBLE);
                 saveUserInfo();
                 //Store the image and display name in Firebase Storage.
                 //we use profileImageURL to store it to Storage.
@@ -96,7 +99,7 @@ public class updateProfile extends Fragment {
                 ref.child(auth.getCurrentUser().getUid()).child("Info").setValue(newInfo);
                 /////
 
-
+                progress.setVisibility(View.INVISIBLE);
                 //Test krne ke liye
                 /*Intent intent = new Intent(getApplicationContext(),SProfile.class);
                 startActivity(intent);*/

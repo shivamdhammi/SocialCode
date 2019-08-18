@@ -2,6 +2,7 @@ package com.example.socialcode;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,8 +45,10 @@ public class home extends Fragment {
 
     private FloatingActionButton compiler;
     private TextView Name,College;
+    private String codeforces_id;
     private TextView cRating,cSubmission,cConstest;
     private TextView hRating,hubmission,hConstest;
+    private LinearLayout porgress;
 
     private Uri uriProfileImage;//uriZProfileImage = data.getData();[inside startActivityForResult()]
     private String profileImageUrl;//To store the Downloaded URL of the image
@@ -89,9 +93,13 @@ public class home extends Fragment {
         hubmission = view.findViewById(R.id.home_hsubmission);
         hConstest = view.findViewById(R.id.home_hcontset);
 
+        porgress = view.findViewById(R.id.home_progress);
+
         ref = FirebaseDatabase.getInstance().getReference("Users");
         storageReference = FirebaseStorage.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
+
+
 
 
         if(getArguments()!=null){
@@ -101,10 +109,13 @@ public class home extends Fragment {
         retrive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                porgress.setVisibility(View.VISIBLE);
                 fetchdata process = new fetchdata();
                 process.execute();
             }
         });
+
+
 
 
 
@@ -116,6 +127,7 @@ public class home extends Fragment {
     public void onStart() {
         super.onStart();
 
+        porgress.setVisibility(View.VISIBLE);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -124,6 +136,12 @@ public class home extends Fragment {
 
                 Name.setText(userinfo.getName());
                 College.setText(userinfo.getCollege());
+                codeforces_id = userinfo.getCodeforces();
+                if(cRating.getText().equals("-NA-")){
+                    fetchdata process = new fetchdata();
+                    process.execute();
+                }
+
                 if(auth.getCurrentUser().isEmailVerified()){
                     verification.setImageResource(R.drawable.ic_verified_user);
                     verification.setVisibility(View.VISIBLE);
@@ -158,6 +176,7 @@ public class home extends Fragment {
             return;
 
         }
+        porgress.setVisibility(View.INVISIBLE);
     }
 
 
@@ -194,12 +213,13 @@ public class home extends Fragment {
                 // Appropriate error handling code
             }
             cRating.setText(rating);
+            porgress.setVisibility(View.INVISIBLE);
         }
 
         @Override
-        protected String doInBackground(Void... voids) {
+        protected String doInBackground(Void... voids){
             try {
-                URL url = new URL("http://codeforces.com/api/user.info?handles=shivam_dhammi");
+                URL url = new URL("http://codeforces.com/api/user.info?handles=+"+codeforces_id);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));

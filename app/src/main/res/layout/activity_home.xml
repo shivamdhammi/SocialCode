@@ -117,7 +117,7 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingHorizontal="10dp"
@@ -127,7 +127,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Submission"
@@ -136,7 +136,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Contest"
@@ -158,35 +158,33 @@
                 android:paddingHorizontal="10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0"
+                    android:text="-NA-"
                     android:gravity="start"
                     android:id="@+id/home_crating"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/home_csubmission"
-                    android:text="0"
-                    android:gravity="center"
+                    android:text="-NA-"
+                    android:gravity="start"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/home_ccontset"
-                    android:text="0"
-                    android:gravity="center"
+                    android:text="-NA-"
+                    android:gravity="start"
                     android:textColor="#fff"
-                    android:paddingLeft="50dp"
-
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -238,8 +236,7 @@
                 android:weightSum="3">
 
                 <TextView
-                    android:layout_width="wrap_content"
-
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Rating"
@@ -249,7 +246,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Submission"
@@ -259,7 +256,7 @@
 
                 <TextView
 
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Contest"
@@ -281,33 +278,32 @@
                 android:paddingHorizontal="10sp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/home_hrating"
                     android:layout_weight="1"
-                    android:text="0"
+                    android:text="-NA-"
                     android:gravity="start"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:id="@+id/home_hsubmission"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0"
-                    android:gravity="center"
+                    android:text="-NA-"
+                    android:gravity="start"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/home_hcontset"
                     android:layout_weight="1"
-                    android:text="0"
-                    android:gravity="center"
-                    android:paddingLeft="50dp"
+                    android:text="-NA-"
+                    android:gravity="start"
                     android:textColor="#fff"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -320,6 +316,27 @@
         </LinearLayout>
 
 
+    <LinearLayout
+        android:id="@+id/home_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:paddingVertical="300dp"
+        android:background="#B2000000"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        android:paddingHorizontal="170dp">
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/login_avi"
+            style="@style/AVLoadingIndicatorView.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:indicatorColor="#179FEB"
+            app:indicatorName="LineScaleIndicator" />
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/home_compiler"
