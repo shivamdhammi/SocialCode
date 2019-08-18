@@ -1,13 +1,16 @@
 package com.example.socialcode;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +29,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class home extends Fragment {
 
     private FloatingActionButton compiler;
@@ -38,8 +51,15 @@ public class home extends Fragment {
     private FirebaseAuth auth;
     private DatabaseReference ref;
     private StorageReference storageReference;
-    private ImageView pic,verification;
+    private ImageView pic,verification,retrive;
     private String userId;
+    private String rating="";
+
+//    private homeListener listener;
+//
+//    public interface homeListener{
+//        void onInputHomeSent(String input);
+//    }
 
     @Nullable
     @Override
@@ -61,6 +81,7 @@ public class home extends Fragment {
         College = view.findViewById(R.id.home_college);
         pic = view.findViewById(R.id.home_pic);
         verification = view.findViewById(R.id.home_verification);
+        retrive = view.findViewById(R.id.home_retrive);
         cRating = view.findViewById(R.id.home_crating);
         cSubmission = view.findViewById(R.id.home_csubmission);
         cConstest = view.findViewById(R.id.home_ccontset);
@@ -71,6 +92,21 @@ public class home extends Fragment {
         ref = FirebaseDatabase.getInstance().getReference("Users");
         storageReference = FirebaseStorage.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
+
+
+        if(getArguments()!=null){
+            cRating.setText(getArguments().getString("rating"));
+        }
+
+        retrive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fetchdata process = new fetchdata();
+                process.execute();
+            }
+        });
+
+
 
         return view;
 
@@ -107,9 +143,13 @@ public class home extends Fragment {
                 @Override
                 public void onSuccess(Uri uri) {
                     //Load image in the image view from Firebase Storage.
-                    Glide.with(getContext()).
-                            load(uri).
-                            into(pic);
+                    try {
+                        Glide.with(getContext()).
+                                load(uri).
+                                into(pic);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         } catch (Exception e) {
@@ -118,7 +158,70 @@ public class home extends Fragment {
             return;
 
         }
-
-
     }
+
+
+
+    private class fetchdata extends AsyncTask<Void,Void,String> {
+        String result;
+
+        public fetchdata() {
+            super();
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            try {
+                JSONObject object = (JSONObject) new JSONTokener(s).nextValue();
+                String status = object.getString("status");
+                if(status.equals("OK")){
+                    JSONArray res = object.getJSONArray("result");
+                    JSONObject mydata = (JSONObject) res.get(0);
+                    rating = mydata.getString("rating");
+
+                }
+                else{
+                    Toast.makeText(getContext(),object.getString("comment"),Toast.LENGTH_LONG).show();
+                }
+            } catch (JSONException e) {
+                // Appropriate error handling code
+            }
+            cRating.setText(rating);
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                URL url = new URL("http://codeforces.com/api/user.info?handles=shivam_dhammi");
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    StringBuilder stringBuilder = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    bufferedReader.close();
+                    return stringBuilder.toString();
+                } finally {
+                    urlConnection.disconnect();
+                }
+            } catch (Exception e) {
+                Log.e("ERROR", e.getMessage(), e);
+                return null;
+            }
+//            return null;
+        }
+    }
+
+
+
+
 }

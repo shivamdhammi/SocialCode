@@ -83,13 +83,12 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-//                            SharedPreferences sharedPref=getSharedPreferences("MyData", Context.MODE_PRIVATE);
-//                            SharedPreferences.Editor editor=sharedPref.edit();
-//                            editor.putString("Email",username);
-//                            editor.putString("Password",password);
-//                            editor.putString("Client",radioButton.getText().toString());
-//                            // editor.putString("State",state);
-//                            editor.commit();
+                            SharedPreferences sharedPref=getSharedPreferences("MyData", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor=sharedPref.edit();
+                            editor.putString("Email",Email);
+                            editor.putString("Password",Password);
+                            // editor.putString("State",state);
+                            editor.commit();
 
                             Intent intent = new Intent(getApplicationContext(),profile.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

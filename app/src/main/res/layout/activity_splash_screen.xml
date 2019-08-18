@@ -17,11 +17,41 @@
         android:layout_marginTop="-200dp"/>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="-650dp"
+        android:id="@+id/splash_progress"
+        android:layout_above="@+id/splash_buttons">
+        <net.bohush.geometricprogressview.GeometricProgressView
+            android:id="@+id/progressView"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:gp_type="triangle"
+            app:gp_number_of_angles="7"
+            android:foregroundGravity="center"
+            app:gp_color="#179FEB"
+            app:gp_duration="900"
+            app:gp_figure_padding="3dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#179FEB"
+            android:textSize="20sp"
+            android:text="Fetching your data..."/>
+    </LinearLayout>
 
+
+
+    <LinearLayout
+
+        android:id="@+id/splash_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="600dp"
+        android:layout_marginTop="650dp"
         android:weightSum="1"
         >
 

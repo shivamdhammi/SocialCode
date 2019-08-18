@@ -8,13 +8,22 @@
     android:background="#000">
 
 
+
+
         <ImageView
             android:layout_below="@+id/toolbar"
             android:id="@+id/imageView2"
             android:layout_marginTop="-30dp"
-            android:layout_width="600dp"
+            android:layout_width="800dp"
             android:layout_height="200dp"
-            app:srcCompat="@drawable/coverimage" />
+            app:srcCompat="@drawable/coverimage1" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="350dp"
+            android:padding="5dp"
+            android:id="@+id/home_retrive"
+            android:src="@drawable/ic_retrive"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -29,7 +38,7 @@
 
 
         <LinearLayout
-            android:layout_marginTop="-20dp"
+            android:layout_marginTop="0dp"
             android:id="@+id/home_namelayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,27 +77,33 @@
 
 
         <LinearLayout
+            android:layout_marginTop="40dp"
             android:id="@+id/linearone"
-            android:layout_width="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
             android:layout_below="@+id/home_pic"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:foregroundGravity="center"
+            android:background="@drawable/buttonbackground">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="20dp"
-                android:background="#fff" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:layout_marginTop="0dp"-->
+                <!--android:background="#fff" />-->
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#18A0EC"
-                android:paddingHorizontal="150dp"
+                android:paddingHorizontal="80dp"
                 android:text="CodeForces"
                 android:textColor="#fff"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <View
                 android:layout_width="match_parent"
@@ -106,6 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingHorizontal="10dp"
+                    android:background="#000"
                     android:text="Rating"
                     android:textColor="#fff"
                     android:textSize="20sp" />
@@ -116,6 +132,7 @@
                     android:layout_weight="1"
                     android:text="Submission"
                     android:textColor="#fff"
+                    android:background="#000"
                     android:textSize="20sp" />
 
                 <TextView
@@ -123,6 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Contest"
+                    android:background="#000"
                     android:textColor="#fff"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -144,6 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="0"
+                    android:gravity="start"
                     android:id="@+id/home_crating"
                     android:textColor="#fff"
                     android:textSize="20sp" />
@@ -154,6 +173,7 @@
                     android:layout_weight="1"
                     android:id="@+id/home_csubmission"
                     android:text="0"
+                    android:gravity="center"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 
@@ -163,41 +183,48 @@
                     android:layout_weight="1"
                     android:id="@+id/home_ccontset"
                     android:text="0"
+                    android:gravity="center"
                     android:textColor="#fff"
                     android:paddingLeft="50dp"
 
                     android:textSize="20sp" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#fff" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:background="#fff" />-->
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            android:foregroundGravity="center"
             android:layout_below="@+id/linearone"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/buttonbackground">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="20dp"
-                android:background="#fff" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:background="#fff" />-->
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#18A0EC"
-                android:paddingHorizontal="150dp"
+                android:paddingHorizontal="80dp"
                 android:text="HackerRank"
                 android:textColor="#fff"
-                android:textSize="20sp" />
+                android:textStyle="bold"
+                android:textSize="20sp"/>
 
             <View
                 android:layout_width="match_parent"
@@ -218,6 +245,7 @@
                     android:text="Rating"
                     android:textColor="#fff"
                     android:paddingLeft="10dp"
+                    android:background="#000"
                     android:textSize="20sp" />
 
                 <TextView
@@ -226,6 +254,7 @@
                     android:layout_weight="1"
                     android:text="Submission"
                     android:textColor="#fff"
+                    android:background="#000"
                     android:textSize="20sp" />
 
                 <TextView
@@ -234,6 +263,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Contest"
+                    android:background="#000"
                     android:textColor="#fff"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -256,6 +286,7 @@
                     android:id="@+id/home_hrating"
                     android:layout_weight="1"
                     android:text="0"
+                    android:gravity="start"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 
@@ -265,6 +296,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="0"
+                    android:gravity="center"
                     android:textColor="#fff"
                     android:textSize="20sp" />
 
@@ -274,17 +306,20 @@
                     android:id="@+id/home_hcontset"
                     android:layout_weight="1"
                     android:text="0"
+                    android:gravity="center"
                     android:paddingLeft="50dp"
                     android:textColor="#fff"
                     android:textSize="20sp" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#fff" />
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:background="#fff" />-->
 
         </LinearLayout>
+
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/home_compiler"
