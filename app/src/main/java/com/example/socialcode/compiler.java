@@ -17,13 +17,5 @@ import android.webkit.WebViewClient;
         webView = findViewById(R.id.compiler_web);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("https://ide.codingblocks.com");
-//        webView.setWebViewClient(new WebViewClient(){
-//
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, String url){
-//                view.loadUrl("https://www.google.com");
-//                return true;
-//            }
-//        });
     }
 }

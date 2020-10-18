@@ -163,7 +163,6 @@ public class splashScreen extends AppCompatActivity {
         timer = new CountDownTimer(time,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-
             }
 
             @Override

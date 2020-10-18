@@ -50,8 +50,8 @@ public class home extends Fragment {
     private TextView hRating,hubmission,hConstest;
     private LinearLayout porgress;
 
-    private Uri uriProfileImage;//uriZProfileImage = data.getData();[inside startActivityForResult()]
-    private String profileImageUrl;//To store the Downloaded URL of the image
+    private Uri uriProfileImage;
+    private String profileImageUrl;
     private FirebaseAuth auth;
     private DatabaseReference ref;
     private StorageReference storageReference;
@@ -59,16 +59,9 @@ public class home extends Fragment {
     private String userId;
     private String rating="";
 
-//    private homeListener listener;
-//
-//    public interface homeListener{
-//        void onInputHomeSent(String input);
-//    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        return inflater.inflate(R.layout.activity_home,container,false);
 
         View view = inflater.inflate(R.layout.activity_home, container, false);
         compiler =  view.findViewById(R.id.home_compiler);
@@ -99,9 +92,6 @@ public class home extends Fragment {
         storageReference = FirebaseStorage.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
 
-
-
-
         if(getArguments()!=null){
             cRating.setText(getArguments().getString("rating"));
         }
@@ -114,13 +104,7 @@ public class home extends Fragment {
                 process.execute();
             }
         });
-
-
-
-
-
         return view;
-
     }
 
     @Override
@@ -145,7 +129,6 @@ public class home extends Fragment {
                 if(auth.getCurrentUser().isEmailVerified()){
                     verification.setImageResource(R.drawable.ic_verified_user);
                     verification.setVisibility(View.VISIBLE);
-//                    Toast.makeText(getContext(),"yeb email "+auth.getCurrentUser().isEmailVerified(),Toast.LENGTH_LONG).show();
                 }
             }
             @Override
@@ -160,7 +143,6 @@ public class home extends Fragment {
                     .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    //Load image in the image view from Firebase Storage.
                     try {
                         Glide.with(getContext()).
                                 load(uri).
@@ -172,14 +154,11 @@ public class home extends Fragment {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            //Toast.makeText(getApplicationContext(),"@@@@@@@@@@@@@@@@",Toast.LENGTH_LONG).show();
             return;
 
         }
         porgress.setVisibility(View.INVISIBLE);
     }
-
-
 
     private class fetchdata extends AsyncTask<Void,Void,String> {
         String result;
@@ -210,7 +189,6 @@ public class home extends Fragment {
                     Toast.makeText(getContext(),object.getString("comment"),Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
-                // Appropriate error handling code
             }
             cRating.setText(rating);
             porgress.setVisibility(View.INVISIBLE);
@@ -237,11 +215,7 @@ public class home extends Fragment {
                 Log.e("ERROR", e.getMessage(), e);
                 return null;
             }
-//            return null;
         }
     }
-
-
-
 
 }
