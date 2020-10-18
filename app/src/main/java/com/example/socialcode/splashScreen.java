@@ -44,8 +44,6 @@ public class splashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-//        can be easily impplemented in styles.xml
-//        getActionBar().hide();
         btnLogin = findViewById(R.id.ss_login);
         btnRegister = findViewById(R.id.ss_register);
         progress = findViewById(R.id.splash_progress);
@@ -53,7 +51,6 @@ public class splashScreen extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences("MyData", Context.MODE_PRIVATE);
         user = sharedPref.getString("Email","");
         pass = sharedPref.getString("Password","");
-//        pass="";
         codeforcesid = sharedPref.getString("codeforces_id","");
         auth = FirebaseAuth.getInstance();
 
@@ -83,7 +80,6 @@ public class splashScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),login.class);
                 startActivity(intent);
-//                finish();
             }
         });
 
@@ -92,7 +88,6 @@ public class splashScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),register.class);
                 startActivity(intent);
-//                finish();
             }
         });
     }
@@ -126,7 +121,6 @@ public class splashScreen extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),object.getString("comment"),Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
-                // Appropriate error handling code
             }
 
 
@@ -158,7 +152,6 @@ public class splashScreen extends AppCompatActivity {
                 Log.e("ERROR", e.getMessage(), e);
                 return null;
             }
-//            return null;
         }
     }
 
@@ -170,7 +163,6 @@ public class splashScreen extends AppCompatActivity {
         timer = new CountDownTimer(time,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-
             }
 
             @Override

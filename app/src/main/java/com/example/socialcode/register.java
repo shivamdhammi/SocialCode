@@ -139,7 +139,6 @@ public class register extends AppCompatActivity {
             hackerrank.requestFocus();
             return false;
         }
-
         return true;
     }
 

@@ -56,7 +56,6 @@ public class login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(),"clicked",Toast.LENGTH_LONG).show();
                 loginUser();
             }
         });
@@ -97,7 +96,6 @@ public class login extends AppCompatActivity {
             return;
         }
 
-
         auth.signInWithEmailAndPassword(Email,Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -107,7 +105,6 @@ public class login extends AppCompatActivity {
                             SharedPreferences.Editor editor=sharedPref.edit();
                             editor.putString("Email",Email);
                             editor.putString("Password",Password);
-                            // editor.putString("State",state);
                             editor.commit();
 
                             Intent intent = new Intent(getApplicationContext(),profile.class);
@@ -117,8 +114,6 @@ public class login extends AppCompatActivity {
                         }else{
                             avi.smoothToHide();
                             Toast.makeText(getApplicationContext(),"Login Failed",Toast.LENGTH_LONG).show();
-
-//                Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -135,8 +130,6 @@ public class login extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Void... voids) {
-//            Toast.makeText(getApplicationContext(),"background",Toast.LENGTH_LONG).show();
-
             return ret;
         }
 
@@ -150,10 +143,6 @@ public class login extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Log.d("log---onPostExecute",ret+"");
-
-
         }
-
-
     }
 }

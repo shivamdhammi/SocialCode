@@ -43,10 +43,9 @@ public class profile extends AppCompatActivity{
     private ImageView retrive;
     private FirebaseAuth auth;
     private DatabaseReference ref;
-//    public String rating="";
+
     home Home;
     updateProfile UpdateProfile;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +69,6 @@ public class profile extends AppCompatActivity{
                 SharedPreferences sharedPref=getSharedPreferences("MyData", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor=sharedPref.edit();
                 editor.putString("codeforces_id",userinfo.getCodeforces());
-                // editor.putString("State",state);
                 editor.commit();
             }
             @Override
@@ -109,7 +107,6 @@ public class profile extends AppCompatActivity{
             navigationView.setCheckedItem(R.id.nav_home);
         }
 
-
         logout = findViewById(R.id.nav_logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,14 +118,7 @@ public class profile extends AppCompatActivity{
                 Toast.makeText(getApplicationContext(),"Logout Successful",Toast.LENGTH_LONG).show();
             }
         });
-
-
     }
-
-//    @Override
-//    public void onInputHomeSent(String input) {
-//
-//    }
 
     @Override
     public void onBackPressed() {
@@ -158,9 +148,6 @@ public class profile extends AppCompatActivity{
         editor.putString("Email","");
         editor.putString("Password","");
         editor.putString("codeforces_id","");
-        // editor.putString("State",state);
         editor.commit();
     }
-
-
 }

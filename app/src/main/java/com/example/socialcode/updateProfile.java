@@ -75,9 +75,6 @@ public class updateProfile extends Fragment {
 
         auth = FirebaseAuth.getInstance();
 
-//        Email.setText(auth.getCurrentUser().getEmail());
-        //Toast.makeText(getApplicationContext(),test,Toast.LENGTH_LONG).show();
-
         ref = FirebaseDatabase.getInstance().getReference("Users");
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -87,22 +84,14 @@ public class updateProfile extends Fragment {
             public void onClick(View v) {
                 progress.setVisibility(View.VISIBLE);
                 saveUserInfo();
-                //Store the image and display name in Firebase Storage.
-                //we use profileImageURL to store it to Storage.
-
-                //////
 
                 userInfo newInfo = new userInfo
                         (Name.getText().toString(),College.getText().toString(),Email.getText().toString()
                                 ,Codeforces.getText().toString(),Hackerarnk.getText().toString());
 
                 ref.child(auth.getCurrentUser().getUid()).child("Info").setValue(newInfo);
-                /////
 
                 progress.setVisibility(View.INVISIBLE);
-                //Test krne ke liye
-                /*Intent intent = new Intent(getApplicationContext(),SProfile.class);
-                startActivity(intent);*/
             }
         });
 
@@ -117,29 +106,10 @@ public class updateProfile extends Fragment {
         pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 showImageChooser();
-
-                //to select the image from the device.
-
             }
         });
 
-//        resetPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                auth.sendPasswordResetEmail(Email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if(task.isSuccessful()){
-//                            Toast.makeText(getContext(),"Visit your email to reset your password.",Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                });
-//            }
-//        });
-//
-//
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,16 +137,9 @@ public class updateProfile extends Fragment {
         return view;
     }
 
-    //onStart will retrieve the data from realTime Database and set the value to the corresponding fields.
     @Override
     public void onStart() {
         super.onStart();
-        //Toast.makeText(getApplicationContext(),"Ye chl rha hai",Toast.LENGTH_LONG).show();
-
-        //myRef.child(auth.getCurrentUser().getDisplayName().toString());
-
-        //Log.d("dikkat","Conatct"+myRef.child(auth.getCurrentUser().getUid()).child("contact"));
-
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -188,11 +151,9 @@ public class updateProfile extends Fragment {
                 Email.setText(userinfo.getEmail());
                 Codeforces.setText(userinfo.getCodeforces());
                 Hackerarnk.setText(userinfo.getHackerrank());
-                //Toast.makeText(getApplicationContext(),dataSnapshot.getValue().toString(),Toast.LENGTH_LONG).show();
                 if(auth.getCurrentUser().isEmailVerified()){
                     verify.setText("Verified Account");
                     verification.setImageResource(R.drawable.ic_verified_user);
-//                    Toast.makeText(getContext(),"yeb email "+auth.getCurrentUser().isEmailVerified(),Toast.LENGTH_LONG).show();
                 }
             }
             @Override
@@ -203,12 +164,10 @@ public class updateProfile extends Fragment {
 
 
         try {
-//            Toast.makeText(getContext(),auth.getCurrentUser().getUid().toString(),Toast.LENGTH_LONG).show();
             storageReference.child("profilepics/"+auth.getCurrentUser().getUid()+".jpg")
                     .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    //Load image in the image view from Firebase Storage.
                     Glide.with(getContext()).
                             load(uri).
                             into(pic);
@@ -216,14 +175,10 @@ public class updateProfile extends Fragment {
             });
         } catch (Exception e) {
             e.printStackTrace();
-            //Toast.makeText(getApplicationContext(),"@@@@@@@@@@@@@@@@",Toast.LENGTH_LONG).show();
             return;
         }
-
-
     }
 
-    //saves the users info to the Storage.
     private void saveUserInfo() {
 
         FirebaseUser user = auth.getCurrentUser();
@@ -235,9 +190,6 @@ public class updateProfile extends Fragment {
                     .setPhotoUri(Uri.parse(profileImageUrl))
                     .build();
 
-
-
-            //user.updateProfile() default function to update user's info.
             user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -250,17 +202,14 @@ public class updateProfile extends Fragment {
 
     }
 
-    //this function let us choose a image from the images in the device.
     private void showImageChooser(){
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        //to Upload a image of our choice.
         startActivityForResult(Intent.createChooser(intent, "Select Profile Image"), CHOOSE_IMAGE);
     }
 
 
-    //We override the onActivityResult to set the selected image to imageView(in this case , profilePic).
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -272,7 +221,6 @@ public class updateProfile extends Fragment {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),uriProfileImage);
                 pic.setImageBitmap(bitmap);
 
-                //To upload image to Firebase Storage.
                 uploadImageToFirebaseStorage();
 
             } catch (IOException e) {
